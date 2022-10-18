@@ -1,0 +1,13 @@
+.History {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.History__container {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  text-align: center;
+  border: 1px solid gray;
+  padding: 20px;
+}
+
