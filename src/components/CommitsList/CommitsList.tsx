@@ -1,19 +1,20 @@
-import React from 'react'
 import { Grid } from '@mui/material'
 import { Commit } from '../Commit/Commit';
-
+import { Commit as ICommit } from '../../interfaces/commit.interfaces';
 import './CommitsList.css'
-
-export const CommitsList = () => {
+interface Props {
+  commits: ICommit[]
+}
+export const CommitsList = ({ commits }: Props) => {
   return (
-    <div className="Commits">
+    <main className="Commits">
       <Grid container justifyContent="center" spacing={2}>
-        
-        <Commit />
-        <Commit />
-        <Commit />
-        
+        {
+          commits && commits.map(commit => (
+            <Commit key={commit.sha} {...commit} />
+          ))
+        }
       </Grid>
-    </div>
+    </main>
   )
 }
