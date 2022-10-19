@@ -1,0 +1,17 @@
+.Card {
+  background-color: #17284F;
+  border: 1px solid;
+  border-color: rgb(152,202,63);
+  border-radius: 5px;
+  color: white ;
+  font-weight: 300;
+  padding: 20px;
+}
+
+.Card__title {
+  font-weight: bold;
+}
+
+.Card__content {
+  padding-top: 20px;
+}
