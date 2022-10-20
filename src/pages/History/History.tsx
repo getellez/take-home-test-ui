@@ -3,25 +3,30 @@ import { CommitsList } from '../../components/CommitsList/CommitsList';
 import { Footer } from '../../components/Footer/Footer';
 import { http } from '../../utils/client';
 import { Commit } from '../../interfaces/commit.interfaces';
+import { CustomLoader } from '../../components/CustomLoader/CustomLoader';
 
 import './History.css'
 
 export const History = () => {
   
   const [commits, setCommits] = useState<Commit[]>([])
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const getCommitsFromApi = async () => {
     try {
+      setIsLoading(true)
       const data = await http.get<Commit[]>('http://localhost:3001/api/v1/commits')
       setCommits(data)
+      setIsLoading(false)
     } catch (error) {
+      setIsLoading(false)
       console.log(error)
     }
   }
 
   useEffect(() => {
     getCommitsFromApi()
-  })
+  }, [])
   
   return (
     <div className='History'>
@@ -30,8 +35,11 @@ export const History = () => {
           <h1>Take-home-test</h1>
           <p className='History__description'>An application to list the commits of this project</p>
         </div>
-
-        <CommitsList commits={commits} />
+        {
+          isLoading
+          ? <CustomLoader />
+          : <CommitsList commits={commits} />
+        }
         <Footer />
 
       </div>
