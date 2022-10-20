@@ -14,6 +14,9 @@ You need to have some applications installed on your machine so that you can run
 * Node.js
 * NPM (Node Package Manager)
 
+### Environment Variables
+This project need to send requests to an API that you must specify in a `.env` file. So you can createa copy of the `.env.example` file, rename it and fill it with the correct information.
+
 ### Install dependencies
 <hr>
 
