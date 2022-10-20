@@ -1,0 +1,10 @@
+.Error {
+  background-color: #01143f;
+  height: 100vh;
+  color: rgb(152,202,63);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
