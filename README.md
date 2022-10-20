@@ -13,8 +13,20 @@ You need to have some applications installed on your machine so that you can run
 * OS (Windows / MacOS / Linux)
 * Node.js
 * NPM (Node Package Manager)
+* Git
+
+### Clone
+<hr>
+
+Clone this repository in your computer using the git command:
+
+```
+git clone https://github.com/getellez/take-home-test-ui.git
+```
 
 ### Environment Variables
+<hr>
+
 This project need to send requests to an API that you must specify in a `.env` file. So you can createa copy of the `.env.example` file, rename it and fill it with the correct information.
 
 ### Install dependencies
@@ -34,6 +46,7 @@ npm start
 
 ### Tests
 <hr>
+
 One of the things we can do to ensure the quality of the code of this project or have an idea of how this project works is run the tests:
 ```
 npm test
