@@ -6,6 +6,7 @@ import { Commit } from '../../interfaces/commit.interfaces';
 import { CustomLoader } from '../../components/CustomLoader/CustomLoader';
 
 import './History.css'
+import { EnvironmentConfig } from '../../config/config';
 
 export const History = () => {
   
@@ -15,7 +16,7 @@ export const History = () => {
   const getCommitsFromApi = async () => {
     try {
       setIsLoading(true)
-      const data = await http.get<Commit[]>('http://localhost:3001/api/v1/commits')
+      const data = await http.get<Commit[]>(EnvironmentConfig.API_URL as string)
       setCommits(data)
       setIsLoading(false)
     } catch (error) {
