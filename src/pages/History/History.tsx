@@ -4,19 +4,22 @@ import { Footer } from '../../components/Footer/Footer';
 import { http } from '../../utils/client';
 import { Commit } from '../../interfaces/commit.interfaces';
 import { CustomLoader } from '../../components/CustomLoader/CustomLoader';
+import { EnvironmentConfig } from '../../config/config';
+import { usePagination } from '../../hooks/usePagination/usePagination';
+import { Pagination } from '../../components/Pagination/Pagination';
 
 import './History.css'
-import { EnvironmentConfig } from '../../config/config';
 
 export const History = () => {
   
   const [commits, setCommits] = useState<Commit[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const { currentPage, goToNextPage, goToPreviousPage, perPage, setElementsPerPage } = usePagination()
 
   const getCommitsFromApi = async () => {
     try {
       setIsLoading(true)
-      const data = await http.get<Commit[]>(EnvironmentConfig.API_URL as string)
+      const data = await http.get<Commit[]>(EnvironmentConfig.API_URL+`?per_page=${perPage}&page=${currentPage}` as string)
       setCommits(data)
       setIsLoading(false)
     } catch (error) {
@@ -27,7 +30,7 @@ export const History = () => {
 
   useEffect(() => {
     getCommitsFromApi()
-  }, [])
+  }, [currentPage, perPage])
   
   return (
     <div className='History'>
@@ -39,14 +42,19 @@ export const History = () => {
         {
           isLoading
           ? <CustomLoader />
-          : <CommitsList commits={commits} />
+          : <>
+              <CommitsList commits={commits} />
+              <Pagination 
+              page={currentPage}
+              perPage={perPage}
+              setPerPage={setElementsPerPage}
+              nextPage={goToNextPage}
+              prevPage={goToPreviousPage}
+              />
+            </>
         }
         <Footer />
-
       </div>
-
-      
-
     </div>
   )
 }

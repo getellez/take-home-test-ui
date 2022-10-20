@@ -9,11 +9,11 @@ export const usePagination = () => {
     setPerPage(+e.target.value)
   }
 
-  const handleNextPage = () => {
+  const handleNextPage = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setCurrentPage(currentPage+1)
   }
 
-  const handlePreviousPage = () => {
+  const handlePreviousPage = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (currentPage > 1) {
       setCurrentPage(currentPage-1)
     } else {

@@ -14,4 +14,22 @@
   color: white;
 }
 
+.History__pagination {
+  color: white;
+  text-align: center;
+}
 
+.History__pagination-btn {
+  margin: 0 10px;
+}
+
+.History__pagination-controls {
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.History__pagination-select {
+  padding: 5px 10px;
+  margin-top: 10px;
+}
